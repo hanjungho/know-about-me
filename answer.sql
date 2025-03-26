@@ -65,7 +65,8 @@ GROUP BY user_id;
 # FROM products JOIN (SELECT AVG(rating) AS 평균별점, product_id
 # FROM reviews JOIN (SELECT product_id
 # FROM reviews
-# WHERE rating >= 4) AS t USING (product_id)
+# GROUP BY product_id
+# HAVING AVG(rating) >= 4) AS t USING (product_id)
 # GROUP BY product_id) AS b USING (product_id);
 SELECT
     p.product_name AS 상품이름,
